@@ -73,11 +73,11 @@ add3 m5(d5,c5);
 add3 m6(d6,c6);
 add3 m7(d7,c7);
 assign ones = {c5[2:0],A[0]};
-seven_segment_decoder(ones, on);
+seven_segment_decoder a1(ones, on);
 assign tens = {c7[2:0],c5[3]};
-seven_segment_decoder(tens, tn);
+seven_segment_decoder a2(tens, tn);
 assign hundreds = {c6[3],c7[3]};
-seven_segment_decoder(hundreds, hun);
+seven_segment_decoder a3(hundreds, hun);
 
 endmodule
 
