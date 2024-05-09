@@ -1,8 +1,10 @@
-module Decipher#(parameter N=128,parameter Nr=10,parameter Nk=4)(in, word, out,clk, en);
+module Decipher#(parameter N=128,parameter Nr=10,parameter Nk=4)(in, word, out,clk , en);
 input [127:0] in;
 input [1407:0] word; 
-input clk, en;
+input clk;
 output reg [127:0] out;
+input en;
+
 reg [127:0] currentState;
 wire [127:0] afterSubBytes;
 wire [127:0] afterShiftRows;
@@ -23,9 +25,10 @@ addRoundKey addrk2(afterShiftRows, FinalOut2, word[((128*(Nr+1))-1)-:128]);
 
 
 
-always@(posedge clk)
+always@(posedge clk or posedge en)
 
-	if (en == 1) begin
+	if(en==1) begin
+
 	if (i <= Nr) begin
 	  if (i == 0 && firstRound !== 'bx) begin
 		currentState <= firstRound;
@@ -42,7 +45,8 @@ always@(posedge clk)
 	  else if (i == Nr && midRounds !== 'bx) begin
 		out <= FinalOut2;
 	  end
-	end	 
+	  
+	end
 	
 end
 

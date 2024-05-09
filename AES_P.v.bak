@@ -42,11 +42,11 @@ reg [127:0] inputDes;
 Decipher d(inputDes, w, decipherOut, clk, en);
 integer i=0;
 always @ (posedge clk) begin
-	if (i <= 12) begin
+	if (i <= 11) begin
 		decrypted128 <= cipherOut;
 		i = i +1;
 		en <= 0;
-		if(i==12) begin
+		if(i==11) begin
 		inputDes<=cipherOut;
 		en <= 1;
 		end
