@@ -1,6 +1,6 @@
 module Cipher#(parameter N=128,parameter Nr=10,parameter Nk=4)(in, word, out,clk);
 input [127:0] in;
-input [1407:0] word; 
+input [0 :128*(nr+1)-1] word; // input [1407:0] word;
 input clk;
 output reg [127:0] out;
 
@@ -42,7 +42,14 @@ always@(posedge clk)
 	  end
 	  
 	end
+/*
+alwayes@(*) begin 
 
+	end
+
+
+
+*/
 endmodule
 
 /*

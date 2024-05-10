@@ -45,6 +45,13 @@ always@(posedge clk)
 	end	 
 	
 end
+/* edit
+always @(*)begin
+	 if(i==0) begin
+		currentState= in^word[127:0];
+	 end
+end
+*/
 
 endmodule
 

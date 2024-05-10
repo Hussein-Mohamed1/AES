@@ -25,7 +25,7 @@ wire[127:0] encrypted128;
 //wire[127:0] encrypted256;
 
 assign e128 = (encrypted128 == expected128 ) ? 1'b1 : 1'b0;
-//assign e128 = (encrypted192 == expected192 && enable) ? 1'b1 : 1'b0;
+//assign e128 = (encrypted128 == expected192) ? 1'b1 : 1'b0;
 //assign e128 = (encrypted256 == expected256 && enable) ? 1'b1 : 1'b0;
 
 // The result of the decryption module for every type
@@ -35,29 +35,40 @@ reg [127:0] decrypted128;
 //
 wire [127:0] cipherOut;
 wire [127:0] decipherOut;
-wire [1407:0] w; 
-KeyExpantion Ky(key128 , w);
-Cipher a(in, w , cipherOut, clk);
+wire [1663:0] w;
+KeyExpantion  Ky(key128 , w);
+Cipher  a(in, w , cipherOut, clk);
 reg [127:0] inputDes;
-Decipher d(inputDes, w, decipherOut, clk, en);
+Decipher  d(inputDes, w, decipherOut, clk, en);
 integer i=0;
 always @ (posedge clk) begin
 	if (i <= 12) begin
-		decrypted128 <= cipherOut;
+		//decrypted128 <= cipherOut;
 		i = i +1;
 		en <= 0;
 		if(i==12) begin
-		inputDes<=cipherOut;
+		//inputDes<=cipherOut;
 		en <= 1;
 		end
-		end
-	else if (i < 25) begin
-		decrypted128 <= decipherOut;
+	end
+
+	else if (i < 24) begin
+		//decrypted128 <= decipherOut;
 		i= i+1;
-		en <= 1; 
+		en <= 1;
 	end
 end
-
+always @(*) begin
+	if (i < 13) begin
+		 decrypted128 = cipherOut;
+		if (i == 12) begin
+		   inputDes = cipherOut;
+		 end
+	end
+	else if (i < 25)begin
+		 decrypted128 = decipherOut;
+	end
+end
 assign d128 = (decrypted128 == in) ? 1'b1 : 1'b0;
 //assign d192 = (decrypted192 == in && enable) ? 1'b1 : 1'b0;
 //assign d128 = (decrypted256 == in && enable) ? 1'b1 : 1'b0;
