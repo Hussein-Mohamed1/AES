@@ -218,29 +218,33 @@ always @ (posedge clk) begin
 		end
 
 		en = 0;
-		i = i +1;
-		
-		if(i == Nr + 2) begin
-			if (set1 == 0 && set2 == 0) begin
-				decrypted128 <= inputdecipher1;
-				Nr <= 10;
-			end
-			else if (set1 == 0 && set2 == 1) begin
-				decrypted192 <= inputdecipher2;
-				Nr <= 12;
-			end
-			else if (set1 == 1 && set2 == 0) begin
-				decrypted256 <= inputdecipher3;
-				Nr <= 14;
-			end
-			else begin
-				i = 0;
-				en <= 0;
-				
-			end
+		i = i + 1;
 
-			en = 1; // en = 0 ;
+		if (i == Nr + 3) begin
+			en = 1;
 		end
+		
+	//	if(i == Nr + 2) begin
+		// 	if (set1 == 0 && set2 == 0) begin
+		// 		decrypted128 <= inputdecipher1;
+		// 		Nr <= 10;
+		// 	end
+		// 	else if (set1 == 0 && set2 == 1) begin
+		// 		decrypted192 <= inputdecipher2;
+		// 		Nr <= 12;
+		// 	end
+		// 	else if (set1 == 1 && set2 == 0) begin
+		// 		decrypted256 <= inputdecipher3;
+		// 		Nr <= 14;
+		// 	end
+		// 	else begin
+		// 		i = 0;
+		// 		en <= 0;
+				
+		// 	end
+
+		// 	en = 1; // en = 0 ;
+	//	end
 
 	end
 
