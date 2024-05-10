@@ -1,0 +1,259 @@
+# Compile of add3.v was successful.
+# Compile of addRoundKey.v was successful.
+# Compile of AES_P.v was successful.
+# Compile of AES_P_tb.v was successful.
+# Compile of Cipher.v was successful.
+# Compile of Decipher.v was successful.
+# Compile of decryptRound.v was successful.
+# Compile of encryptRound.v was successful.
+# Compile of inv_subByte.v was successful.
+# Compile of inverseMixColumns.v was successful.
+# Compile of inverseShiftRows.v was successful.
+# Compile of keyExpantion.v was successful.
+# Compile of mixColumns.v was successful.
+# Compile of sbox.v was successful.
+# Compile of shiftRows.v was successful.
+# Compile of subBytes.v was successful.
+# 16 compiles, 0 failed with no errors.
+vsim AES_P_tb
+# vsim AES_P_tb 
+# Start time: 17:21:31 on May 10,2024
+# Loading work.AES_P_tb
+# Loading work.AES_P
+# Loading work.KeyExpantion
+# Loading work.Cipher
+# Loading work.addRoundKey
+# Loading work.encryptRound
+# Loading work.subBytes
+# Loading work.shiftRows
+# Loading work.mixColumns
+# Loading work.Decipher
+# Loading work.decryptRound
+# Loading work.inverseShiftRows
+# Loading work.inv_subByte
+# Loading work.inverseMixColumns
+# Loading work.convertBinToBcd
+# Loading work.add3
+# Loading work.seven_segment_decoder
+# Loading work.Sbox
+# Loading work.inv_Sbox
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (2) for port 'in'. The port definition is at: C:/Users/DELL/Desktop/AES/add3.v(2).
+#    Time: 0 ps  Iteration: 0  Instance: /AES_P_tb/AES_P_inst/Cin/a3 File: C:/Users/DELL/Desktop/AES/add3.v Line: 80
+# ** Warning: (vsim-3015) [PCDPC] - Port size (4) does not match connection size (2) for port 'in'. The port definition is at: C:/Users/DELL/Desktop/AES/add3.v(2).
+#    Time: 0 ps  Iteration: 0  Instance: /AES_P_tb/AES_P_inst/Cout/a3 File: C:/Users/DELL/Desktop/AES/add3.v Line: 80
+add wave -position insertpoint sim:/AES_P_tb/*
+run 1200
+# key: 000102030405060708090a0b0c0d0e0f NR:          10 
+# Time:                    5, e128: x, d128: x, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# out: 00112233445566778899aabbccddeeff NR:          10 i:           1  en: 0 
+# Time:                   15, e128: x, d128: x, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# out: 00102030405060708090a0b0c0d0e0f0 NR:          10 i:           2  en: 0 
+# Time:                   25, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# out: 89d810e8855ace682d1843d8cb128fe4 NR:          10 i:           3  en: 0 
+# Time:                   35, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 78, segOut_2: 30, segOut_3: 7f
+# out: 4915598f55e5d7a0daca94fa1f0a63f7 NR:          10 i:           4  en: 0 
+# Time:                   45, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 30, segOut_2: 78, segOut_3: 7f
+# out: fa636a2825b339c940668a3157244d17 NR:          10 i:           5  en: 0 
+# Time:                   55, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 12, segOut_3: 7f
+# out: 247240236966b3fa6ed2753288425b6c NR:          10 i:           6  en: 0 
+# Time:                   65, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 02, segOut_2: 30, segOut_3: 7f
+# out: c81677bc9b7ac93b25027992b0261996 NR:          10 i:           7  en: 0 
+# Time:                   75, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# out: c62fe109f75eedc3cc79395d84f9cf5d NR:          10 i:           8  en: 0 
+# Time:                   85, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 00, segOut_2: 10, segOut_3: 7f
+# out: d1876c0f79c4300ab45594add66ff41f NR:          10 i:           9  en: 0 
+# Time:                   95, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 10, segOut_2: 40, segOut_3: 7f
+# out: fde3bad205e5d0d73547964ef1fe37f1 NR:          10 i:          10  en: 0 
+# Time:                  105, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 30, segOut_2: 12, segOut_3: 7f
+# out: bd6e7c3df2b5779e0b61216e8b10b689 NR:          10 i:          11  en: 0 
+# Time:                  115, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 10, segOut_2: 00, segOut_3: 7f
+# out: 69c4e0d86a7b0430d8cdb78070b4c55a NR:          10 i:          12  en: 0 
+# Time:                  125, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 12, segOut_2: 40, segOut_3: 7f
+# out: 7ad5fda789ef4e272bca100b3d9ff59f NR:          10 i:          13  en: 1 
+# Time:                  135, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 24, segOut_2: 24, segOut_3: 7f
+# out: 54d990a16ba09ab596bbf40ea111702f NR:          10 i:          14  en: 1 
+# Time:                  145, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 19, segOut_2: 00, segOut_3: 7f
+# out: 3e1c22c0b6fcbf768da85067f6170495 NR:          10 i:          15  en: 1 
+# Time:                  155, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 24, segOut_2: 02, segOut_3: 7f
+# out: b458124c68b68a014b99f82e5f15554c NR:          10 i:          16  en: 1 
+# Time:                  165, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 00, segOut_3: 7f
+# out: e8dab6901477d4653ff7f5e2e747dd4f NR:          10 i:          17  en: 1 
+# Time:                  175, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 24, segOut_2: 30, segOut_3: 7f
+# out: 36339d50f9b539269f2c092dc4406d23 NR:          10 i:          18  en: 1 
+# Time:                  185, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 19, segOut_2: 12, segOut_3: 7f
+# out: 2d6d7ef03f33e334093602dd5bfb12c7 NR:          10 i:          19  en: 1 
+# Time:                  195, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 12, segOut_2: 19, segOut_3: 7f
+# out: 3bd92268fc74fb735767cbe0c0590e2d NR:          10 i:          20  en: 1 
+# Time:                  205, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 10, segOut_2: 12, segOut_3: 7f
+# out: a7be1a6997ad739bd8c9ca451f618b61 NR:          10 i:          21  en: 1 
+# Time:                  215, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 78, segOut_2: 02, segOut_3: 7f
+# out: 6353e08c0960e104cd70b751bacad0e7 NR:          10 i:          22  en: 1 
+# Time:                  225, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 10, segOut_2: 10, segOut_3: 7f
+# out: 00112233445566778899aabbccddeeff NR:          10 i:          23  en: 1 
+# Time:                  235, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# out: 00112233445566778899aabbccddeeff NR:          10 i:          24  en: 1 
+# Time:                  245, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                  255, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                  265, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                  275, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                  285, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                  295, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# out: 00000000000000000000000000000000 NR:          10 i:           0  en: 0 
+# Time:                  305, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# out: 00000000000000000000000000000000 NR:          10 i:           0  en: 0 
+# key: 000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f NR:          14 
+# Time:                  315, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 79, segOut_2: 00, segOut_3: 7f
+# out: 00102030405060708090a0b0c0d0e0f0 NR:          14 i:           1  en: 0 
+# Time:                  325, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# out: 4f63760643e0aa85efa7213201a4e705 NR:          14 i:           2  en: 0 
+# Time:                  335, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 10, segOut_2: 78, segOut_3: 7f
+# out: 1859fbc28a1c00a078ed8aadc42f6109 NR:          14 i:           3  en: 0 
+# Time:                  345, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 19, segOut_2: 24, segOut_3: 7f
+# out: 975c66c1cb9f3fa8a93a28df8ee10f63 NR:          14 i:           4  en: 0 
+# Time:                  355, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 79, segOut_2: 12, segOut_3: 7f
+# out: 1c05f271a417e04ff921c5c104701554 NR:          14 i:           5  en: 0 
+# Time:                  365, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 00, segOut_2: 24, segOut_3: 7f
+# out: c357aae11b45b7b0a2c7bd28a8dc99fa NR:          14 i:           6  en: 0 
+# Time:                  375, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 12, segOut_2: 10, segOut_3: 7f
+# out: 7f074143cb4e243ec10c815d8375d54c NR:          14 i:           7  en: 0 
+# Time:                  385, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 78, segOut_2: 24, segOut_3: 7f
+# out: d653a4696ca0bc0f5acaab5db96c5e7d NR:          14 i:           8  en: 0 
+# Time:                  395, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 19, segOut_2: 79, segOut_3: 7f
+# out: 5aa858395fd28d7d05e1a38868f3b9c5 NR:          14 i:           9  en: 0 
+# Time:                  405, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 10, segOut_3: 7f
+# out: 4a824851c57e7e47643de50c2af3e8c9 NR:          14 i:          10  en: 0 
+# Time:                  415, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 19, segOut_2: 78, segOut_3: 7f
+# out: c14907f6ca3b3aa070e9aa313b52b5ec NR:          14 i:          11  en: 0 
+# Time:                  425, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 30, segOut_2: 10, segOut_3: 7f
+# out: 5f9c6abfbac634aa50409fa766677653 NR:          14 i:          12  en: 0 
+# Time:                  435, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 12, segOut_2: 10, segOut_3: 7f
+# out: 516604954353950314fb86e401922521 NR:          14 i:          13  en: 0 
+# Time:                  445, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 79, segOut_2: 00, segOut_3: 7f
+# out: 627bceb9999d5aaac945ecf423f56da5 NR:          14 i:          14  en: 0 
+# Time:                  455, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 00, segOut_2: 10, segOut_3: 7f
+# out: 8ea2b7ca516745bfeafc49904b496089 NR:          14 i:          15  en: 0 
+# Time:                  465, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 24, segOut_2: 19, segOut_3: 7f
+# out: 8ea2b7ca516745bfeafc49904b496089 NR:          14 i:          16  en: 0 
+# Time:                  475, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 24, segOut_2: 19, segOut_3: 7f
+# out: aa5ece06ee6e3c56dde68bac2621bebf NR:          14 i:          17  en: 1 
+# Time:                  485, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 78, segOut_3: 7f
+# out: d1ed44fd1a0f3f2afa4ff27b7c332a69 NR:          14 i:          18  en: 1 
+# Time:                  495, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 10, segOut_2: 40, segOut_3: 7f
+# out: cfb4dbedf4093808538502ac33de185c NR:          14 i:          19  en: 1 
+# Time:                  505, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 78, segOut_2: 40, segOut_3: 7f
+# out: 78e2acce741ed5425100c5e0e23b80c7 NR:          14 i:          20  en: 1 
+# Time:                  515, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 24, segOut_3: 7f
+# out: d6f3d9dda6279bd1430d52a0e513f3fe NR:          14 i:          21  en: 1 
+# Time:                  525, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 19, segOut_2: 79, segOut_3: 7f
+# out: beb50aa6cff856126b0d6aff45c25dc4 NR:          14 i:          22  en: 1 
+# Time:                  535, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 10, segOut_3: 7f
+# out: f6e062ff507458f9be50497656ed654c NR:          14 i:          23  en: 1 
+# Time:                  545, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 02, segOut_2: 19, segOut_3: 7f
+# out: d22f0c291ffe031a789d83b2ecc5364c NR:          14 i:          24  en: 1 
+# Time:                  555, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 79, segOut_3: 7f
+# out: 2e6e7a2dafc6eef83a86ace7c25ba934 NR:          14 i:          25  en: 1 
+# Time:                  565, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 02, segOut_2: 19, segOut_3: 7f
+# out: 9cf0a62049fd59a399518984f26be178 NR:          14 i:          26  en: 1 
+# Time:                  575, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 02, segOut_2: 12, segOut_3: 7f
+# out: 88db34fb1f807678d3f833c2194a759e NR:          14 i:          27  en: 1 
+# Time:                  585, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 02, segOut_2: 30, segOut_3: 7f
+# out: ad9c7e017e55ef25bc150fe01ccb6395 NR:          14 i:          28  en: 1 
+# Time:                  595, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 30, segOut_2: 78, segOut_3: 7f
+# out: 84e1fd6b1a5c946fdf4938977cfbac23 NR:          14 i:          29  en: 1 
+# Time:                  605, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 24, segOut_2: 30, segOut_3: 7f
+# out: 6353e08c0960e104cd70b751bacad0e7 NR:          14 i:          30  en: 1 
+# Time:                  615, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 10, segOut_2: 10, segOut_3: 7f
+# out: 00112233445566778899aabbccddeeff NR:          14 i:          31  en: 1 
+# Time:                  625, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# out: 00112233445566778899aabbccddeeff NR:          14 i:          32  en: 1 
+# Time:                  635, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                  645, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                  655, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                  665, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                  675, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                  685, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                  695, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                  705, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                  715, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                  725, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                  735, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                  745, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                  755, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                  765, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                  775, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                  785, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                  795, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                  805, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# out: 00000000000000000000000000000000 NR:          14 i:           0  en: 0 
+# Time:                  815, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# out: 00112233445566778899aabbccddeeff NR:          14 i:           0  en: 0 
+# key: 000102030405060708090a0b0c0d0e0f1011121314151617 NR:          12 
+# Time:                  825, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 79, segOut_2: 24, segOut_3: 7f
+# out: 00102030405060708090a0b0c0d0e0f0 NR:          12 i:           1  en: 0 
+# Time:                  835, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# out: 4f63760643e0aa85aff8c9d041fa0de4 NR:          12 i:           2  en: 0 
+# Time:                  845, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 10, segOut_2: 78, segOut_3: 7f
+# out: cb02818c17d2af9c62aa64428bb25fd7 NR:          12 i:           3  en: 0 
+# Time:                  855, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 30, segOut_2: 40, segOut_3: 7f
+# out: f75c7778a327c8ed8cfebfc1a6c37f53 NR:          12 i:           4  en: 0 
+# Time:                  865, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 78, segOut_2: 19, segOut_3: 7f
+# out: 22ffc916a81474416496f19c64ae2532 NR:          12 i:           5  en: 0 
+# Time:                  875, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 19, segOut_2: 30, segOut_3: 7f
+# out: 80121e0776fd1d8a8d8c31bc965d1fee NR:          12 i:           6  en: 0 
+# Time:                  885, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 00, segOut_2: 24, segOut_3: 7f
+# out: 671ef1fd4e2a1e03dfdcb1ef3d789b30 NR:          12 i:           7  en: 0 
+# Time:                  895, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 30, segOut_2: 40, segOut_3: 7f
+# out: 0c0370d00c01e622166b8accd6db3a2c NR:          12 i:           8  en: 0 
+# Time:                  905, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 24, segOut_2: 79, segOut_3: 7f
+# out: 7255dad30fb80310e00d6c6b40d0527c NR:          12 i:           9  en: 0 
+# Time:                  915, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 19, segOut_2: 79, segOut_3: 7f
+# out: a906b254968af4e9b4bdb2d2f0c44336 NR:          12 i:          10  en: 0 
+# Time:                  925, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 10, segOut_2: 02, segOut_3: 7f
+# out: 88ec930ef5e7e4b6cc32f4c906d29414 NR:          12 i:          11  en: 0 
+# Time:                  935, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 02, segOut_2: 30, segOut_3: 7f
+# out: afb73eeb1cd1b85162280f27fb20d585 NR:          12 i:          12  en: 0 
+# Time:                  945, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 12, segOut_2: 78, segOut_3: 7f
+# out: dda97ca4864cdfe06eaf70a0ec0d7191 NR:          12 i:          13  en: 0 
+# Time:                  955, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 79, segOut_2: 24, segOut_3: 7f
+# out: dda97ca4864cdfe06eaf70a0ec0d7191 NR:          12 i:          14  en: 0 
+# Time:                  965, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 79, segOut_2: 24, segOut_3: 7f
+# out: 793e76979c3403e9aab7b2d10fa96ccc NR:          12 i:          15  en: 1 
+# Time:                  975, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 79, segOut_2: 24, segOut_3: 7f
+# out: c494bffae62322ab4bb5dc4e6fce69dd NR:          12 i:          16  en: 1 
+# Time:                  985, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 02, segOut_2: 10, segOut_3: 7f
+# out: d37e3705907a1a208d1c371e8c6fbfb5 NR:          12 i:          17  en: 1 
+# Time:                  995, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 79, segOut_2: 79, segOut_3: 7f
+# out: 406c501076d70066e17057ca09fc7b7f NR:          12 i:          18  en: 1 
+# Time:                 1005, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 19, segOut_2: 02, segOut_3: 7f
+# out: fe7c7e71fe7f807047b95193f67b8e4b NR:          12 i:          19  en: 1 
+# Time:                 1015, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 19, segOut_2: 12, segOut_3: 7f
+# out: 85e5c8042f8614549ebca17b277272df NR:          12 i:          20  en: 1 
+# Time:                 1025, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 30, segOut_2: 30, segOut_3: 7f
+# out: cd54c7283864c0c55d4c727e90c9a465 NR:          12 i:          21  en: 1 
+# Time:                 1035, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 12, segOut_2: 40, segOut_3: 7f
+# out: 93faa123c2903f4743e4dd83431692de NR:          12 i:          22  en: 1 
+# Time:                 1045, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 78, segOut_2: 19, segOut_3: 7f
+# out: 68cc08ed0abbd2bc642ef555244ae878 NR:          12 i:          23  en: 1 
+# Time:                 1055, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 19, segOut_2: 40, segOut_3: 7f
+# out: 1fb5430ef0accf64aa370cde3d77792c NR:          12 i:          24  en: 1 
+# Time:                 1065, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 79, segOut_2: 30, segOut_3: 7f
+# out: 84e1dd691a41d76f792d389783fbac70 NR:          12 i:          25  en: 1 
+# Time:                 1075, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 24, segOut_2: 30, segOut_3: 7f
+# out: 6353e08c0960e104cd70b751bacad0e7 NR:          12 i:          26  en: 1 
+# Time:                 1085, e128: x, d128: 0, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 10, segOut_2: 10, segOut_3: 7f
+# out: 00112233445566778899aabbccddeeff NR:          12 i:          27  en: 1 
+# Time:                 1095, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# out: 00112233445566778899aabbccddeeff NR:          12 i:          28  en: 1 
+# Time:                 1105, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                 1115, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                 1125, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                 1135, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                 1145, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                 1155, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                 1165, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                 1175, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                 1185, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+# Time:                 1195, e128: x, d128: 1, segIn_1: 40, segIn_2: 40, segIn_3: 7f, segOut_1: 40, segOut_2: 40, segOut_3: 7f
+quit -sim
+# End time: 17:23:41 on May 10,2024, Elapsed time: 0:02:10
+# Errors: 0, Warnings: 4

@@ -6,6 +6,9 @@ input clk, set1, set2;
 output [6:0] segIn_1, segIn_2, segIn_3;
 output [6:0] segOut_1, segOut_2, segOut_3;
 
+integer Nr = 10;
+integer i = 0;
+
 reg en;
 
 reg [127:0] decrypted;
@@ -45,44 +48,14 @@ wire [127:0] cipherOut3;
 wire [127:0] decipherOut1;
 wire [127:0] decipherOut2;
 wire [127:0] decipherOut3;
-// edit 
-wire [127:0] inputdecipher1;
-wire [127:0] inputdecipher2;
-wire [127:0] inputdecipher3;
-assign inputdecipher1 = cipherOut1;
-assign inputdecipher2 = cipherOut2;
-assign inputdecipher3 = cipherOut3;
-//---------------------------------------------------------------
+
+reg [127:0] inputdecipher1;
+reg [127:0] inputdecipher2;
+reg [127:0] inputdecipher3;
 
 wire [1407:0] w1;
 wire [1663:0] w2;
 wire [1919:0] w3;
-
-integer Nr = 10;
-integer i = 0;
-always @(*)begin
-	in <= 128'h_00112233445566778899aabbccddeeff;
-	if (set1 == 0 && set2 == 0) begin
-		Nr <= 10;
-		key128 = 128'h_000102030405060708090a0b0c0d0e0f;
-		$monitor("key: %h NR: %d " , key128, Nr);
-		
-	end
-	else if (set1 == 0 && set2 == 1) begin
-		Nr <= 12;
-		key192 = 192'h_000102030405060708090a0b0c0d0e0f1011121314151617;
-		$monitor("key: %h NR: %d " , key192, Nr);
-	end
-	else if (set1 == 1 && set2 == 0) begin
-		Nr <= 14;
-		key256 = 256'h_000102030405060708090a0b0c0d0e0f101112131415161718191a1b1c1d1e1f;
-		$monitor("key: %h NR: %d " , key256, Nr);
-	end	
-	else if(set1 == 1 && set2 == 1) begin
-        i = 0;
-		en <= 0;
-	end
-end
 
 
 KeyExpantion #(4, 10) Ky1(key128 , w1);
@@ -99,147 +72,59 @@ Decipher #(128, 10, 4) d1(inputdecipher1, w1, decipherOut1, clk, en, set1, set2)
 Decipher #(128, 12, 6) d2(inputdecipher2, w2, decipherOut2, clk, en, set1, set2);
 Decipher #(128, 14, 8) d3(inputdecipher3, w3, decipherOut3, clk, en, set1, set2);
 
-//edit 
+always @(*)begin
 
-// always @(*) begin
-			
-// 	if(i == 0) begin
-// 			Nr <= 14;
-// 	end
-// 	if (i <= Nr + 2) begin
-		
-// 		if (set1 == 0 && set2 == 0) begin
-// 			decrypted128 <= cipherOut1;
-// 			Nr <= 10;
-// 		end
-// 		else if (set1 == 0 && set2 == 1) begin
-// 			decrypted192 <= cipherOut2;
-// 			Nr <= 12;
-// 		end
-// 		else if (set1 == 1 && set2 == 0) begin
-// 			decrypted256 <= cipherOut3;
-// 			Nr <= 14;
-// 		end	
-// 		else begin
-// 			i = -1; // i = 0;
-// 		end
+	if (set1 == 0 && set2 == 0) begin
+		Nr <= 10;		
+	end
+	else if (set1 == 0 && set2 == 1) begin
+		Nr <= 12;
+	end
+	else if (set1 == 1 && set2 == 0) begin
+		Nr <= 14;
+	end	
+	else if(set1 == 1 && set2 == 1) begin
+        i = 0;
+		en <= 0;
+	end
+end
 
-// 		en = 0;
-		
-
-// 		if(i == Nr + 2) begin
-// 			if (set1 == 0 && set2 == 0) begin
-// 				decrypted128 <= inputdecipher1;
-// 				Nr <= 10;
-// 			end
-// 			else if (set1 == 0 && set2 == 1) begin
-// 				decrypted192 <= inputdecipher2;
-// 				Nr <= 12;
-// 			end
-// 			else if (set1 == 1 && set2 == 0) begin
-// 				decrypted256 <= inputdecipher3;
-// 				Nr <= 14;
-// 			end
-// 			else begin
-// 				i = 0;
-				
-// 			end
-
-// 			en = 1;
-// 		end
-// 	end
-
-// 	else if (i < (2 * (Nr + 2)) ) begin
-
-// 		if (set1 == 0 && set2 == 0) begin
-// 			decrypted128 <= decipherOut1;
-// 			Nr <= 10;
-// 		end
-// 		else if (set1 == 0 && set2 == 1) begin
-// 			decrypted192 <= decipherOut2;
-// 			Nr <= 12;
-// 		end
-// 		else if (set1 == 1 && set2 == 0) begin
-// 			decrypted256 <= decipherOut3;
-// 			Nr <= 14;
-// 		end
-// 		else begin
-// 			i = -1; // i = 0;
-// 		end
-
-	
-// 		en = 1;
-// 	end
-// end
-
-//----------------------------------------------------------------
-//edit
-// always @(*) begin
-// 	if(i == 0) begin
-		
-// 		if (set1 == 0 && set2 == 0) begin
-// 			decrypted128 <= cipherOut1;
-// 			Nr <= 10;
-// 		end
-// 		else if (set1 == 0 && set2 == 1) begin
-// 			decrypted192 <= cipherOut2;
-// 			Nr <= 12;
-// 		end
-// 		else if (set1 == 1 && set2 == 0) begin
-// 			decrypted256 <= cipherOut3;
-// 			Nr <= 14;
-// 		end	
-// 		else begin
-// 			i = -1; // i = 0;
-// 		end
-// 	end
-// end
-//----------------------------------------------------------------
+always @(*) begin
+	if (i <= Nr + 2) begin
+		 decrypted128 = cipherOut1;
+		 decrypted192 = cipherOut2;
+		 decrypted256 = cipherOut3;
+		if (i == Nr + 2) begin
+		   inputdecipher1 = cipherOut1;
+		   inputdecipher2 = cipherOut2;
+		   inputdecipher3 = cipherOut3;
+		 end
+	end
+	else if (i < i < (2 * (Nr + 2)))begin
+		 decrypted128 = decipherOut1;
+		 decrypted192 = decipherOut2;
+		 decrypted256 = decipherOut3;
+	end
+end
+always @(*) begin
+	if(i == 0) begin
+		decrypted = in;
+	end
+end
 
 always @ (posedge clk) begin
 
 	if (i <= Nr + 2) begin
-		
-		if (set1 == 0 && set2 == 0) begin
-			decrypted128 <= cipherOut1;
-			Nr <= 10;
-		end
-		else if (set1 == 0 && set2 == 1) begin
-			decrypted192 <= cipherOut2;
-			Nr <= 12;
-		end
-		else if (set1 == 1 && set2 == 0) begin
-			decrypted256 <= cipherOut3;
-			Nr <= 14;
-		end	
-		else begin
-			i = -1; // i = 0;
+		if(set1 == 1 && set2 == 1) begin
+			i = -1; 
 			en <= 0;
 		end
 
 		en = 0;
-		i = i +1;
-		
-		if(i == Nr + 2) begin
-			if (set1 == 0 && set2 == 0) begin
-				decrypted128 <= inputdecipher1;
-				Nr <= 10;
-			end
-			else if (set1 == 0 && set2 == 1) begin
-				decrypted192 <= inputdecipher2;
-				Nr <= 12;
-			end
-			else if (set1 == 1 && set2 == 0) begin
-				decrypted256 <= inputdecipher3;
-				Nr <= 14;
-			end
-			else begin
-				i = 0;
-				en <= 0;
-				
-			end
+		i = i + 1;
 
-			en = 1; // en = 0 ;
+		if (i == Nr + 3) begin
+			en = 1;
 		end
 
 	end
@@ -247,20 +132,8 @@ always @ (posedge clk) begin
 	else if (i < (2 * (Nr + 2))) begin
 		en = 1;
 
-		if (set1 == 0 && set2 == 0) begin
-			decrypted128 <= decipherOut1;
-			Nr <= 10;
-		end
-		else if (set1 == 0 && set2 == 1) begin
-			decrypted192 <= decipherOut2;
-			Nr <= 12;
-		end
-		else if (set1 == 1 && set2 == 0) begin
-			decrypted256 <= decipherOut3;
-			Nr <= 14;
-		end
-		else begin
-			i = -1; // i = 0;
+		if(set1 == 1 && set2 == 1) begin
+			i = -1; 
 			en <= 0;
 		end
 
@@ -299,17 +172,17 @@ $monitor("out: %h NR: %d i: %d  en: %b " , decrypted, Nr , i , en);
 end
 
 always @(*)begin
-	in <= 128'h_00112233445566778899aabbccddeeff;
+
 	if (set1 == 0 && set2 == 0) begin
-		Nr <= 10;
+
 		$monitor("key: %h NR: %d " , key128, Nr);
 	end
 	else if (set1 == 0 && set2 == 1) begin
-		Nr <= 12;
+
 		$monitor("key: %h NR: %d " , key192, Nr);
 	end
 	else if (set1 == 1 && set2 == 0) begin
-		Nr <= 14;
+		
 		$monitor("key: %h NR: %d " , key256, Nr);
 	end	
 end

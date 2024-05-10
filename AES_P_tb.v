@@ -38,6 +38,14 @@ initial begin
 
     set1 = 1'b1;
     set2 = 1'b0;
+    #500;
+
+    set1 = 1'b1;
+    set2 = 1'b1; 
+    #10
+
+    set1 = 1'b0;
+    set2 = 1'b1;
     #300;
 
 end
