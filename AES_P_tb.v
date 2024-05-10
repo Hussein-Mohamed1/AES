@@ -32,9 +32,9 @@ initial begin
     set2 = 1'b0;
     #300;
 
-    // set1 = 1'b1;
-    // set2 = 1'b1; 
-    // #10
+    set1 = 1'b1;
+    set2 = 1'b1; 
+    #10
 
     set1 = 1'b1;
     set2 = 1'b0;

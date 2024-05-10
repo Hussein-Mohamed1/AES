@@ -198,7 +198,7 @@ Decipher #(128, 14, 8) d3(inputdecipher3, w3, decipherOut3, clk, en, set1, set2)
 
 always @ (posedge clk) begin
 
-	if (i <= Nr + 1) begin
+	if (i <= Nr + 2) begin
 		
 		if (set1 == 0 && set2 == 0) begin
 			decrypted128 <= cipherOut1;
@@ -219,8 +219,8 @@ always @ (posedge clk) begin
 
 		en = 0;
 		i = i +1;
-
-		if(i == Nr + 1) begin
+		
+		if(i == Nr + 2) begin
 			if (set1 == 0 && set2 == 0) begin
 				decrypted128 <= inputdecipher1;
 				Nr <= 10;
@@ -239,8 +239,9 @@ always @ (posedge clk) begin
 				
 			end
 
-			en = 0; // en = 1 ;
+			en = 1; // en = 0 ;
 		end
+
 	end
 
 	else if (i < (2 * (Nr + 2))) begin
