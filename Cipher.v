@@ -1,8 +1,9 @@
-module Cipher#(parameter N=128,parameter Nr=10,parameter Nk=4)(in, word, out,clk);
+module Cipher#(parameter N=128,parameter Nr=10,parameter Nk=4)(in, word, out,clk , en);
 input [127:0] in;
 input [128*(Nr+1)-1:0] word; 
 input clk;
 output reg [127:0] out;
+input en;
 
 reg [127:0] currentState;
 wire [127:0] afterSubBytes;
@@ -23,7 +24,7 @@ shiftRows sr(afterSubBytes, afterShiftRows);
 addRoundKey addrk2(afterShiftRows, FinalOut2, word[127:0]);
 
 always@(posedge clk)
-
+if(en == 0) begin
 	if (i <= Nr) begin
 	  if (i == 0 && firstRound !== 'bx) begin
 		currentState <= firstRound;
@@ -42,7 +43,7 @@ always@(posedge clk)
 	  end
 	  
 	end
-
+end
 endmodule
 
 /*
