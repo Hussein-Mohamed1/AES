@@ -46,12 +46,12 @@ wire [127:0] decipherOut1;
 wire [127:0] decipherOut2;
 wire [127:0] decipherOut3;
 // edit 
- wire [127:0] inputdecipher1;
- wire [127:0] inputdecipher2;
- wire [127:0] inputdecipher3;
- assign inputdecipher1 = cipherOut1;
- assign inputdecipher2 = cipherOut2;
- assign inputdecipher3 = cipherOut3;
+wire [127:0] inputdecipher1;
+wire [127:0] inputdecipher2;
+wire [127:0] inputdecipher3;
+assign inputdecipher1 = cipherOut1;
+assign inputdecipher2 = cipherOut2;
+assign inputdecipher3 = cipherOut3;
 //---------------------------------------------------------------
 
 wire [1407:0] w1;
@@ -79,7 +79,8 @@ always @(*)begin
 		$monitor("key: %h NR: %d " , key256, Nr);
 	end	
 	else if(set1 == 1 && set2 == 1) begin
-        i=0;
+        i = 0;
+		en <= 0;
 	end
 end
 
@@ -88,15 +89,15 @@ KeyExpantion #(4, 10) Ky1(key128 , w1);
 KeyExpantion #(6, 12) Ky2(key192 , w2);
 KeyExpantion #(8, 14) Ky3(key256 , w3);
 
-Cipher #(128, 10, 4) a1(in, w1 , cipherOut1, clk , en);
-Cipher #(128, 12, 6) a2(in, w2 , cipherOut2, clk , en);
-Cipher #(128, 14, 8) a3(in, w3 , cipherOut3, clk , en);
+Cipher #(128, 10, 4) a1(in, w1 , cipherOut1, clk , en, set1, set2);
+Cipher #(128, 12, 6) a2(in, w2 , cipherOut2, clk , en, set1, set2);
+Cipher #(128, 14, 8) a3(in, w3 , cipherOut3, clk , en, set1, set2);
 
 reg [127:0] inputDes;
 
-Decipher #(128, 10, 4) d1(inputdecipher1, w1, decipherOut1, clk, en);
-Decipher #(128, 12, 6) d2(inputdecipher2, w2, decipherOut2, clk, en);
-Decipher #(128, 14, 8) d3(inputdecipher3, w3, decipherOut3, clk, en);
+Decipher #(128, 10, 4) d1(inputdecipher1, w1, decipherOut1, clk, en, set1, set2);
+Decipher #(128, 12, 6) d2(inputdecipher2, w2, decipherOut2, clk, en, set1, set2);
+Decipher #(128, 14, 8) d3(inputdecipher3, w3, decipherOut3, clk, en, set1, set2);
 
 //edit 
 
@@ -197,9 +198,6 @@ Decipher #(128, 14, 8) d3(inputdecipher3, w3, decipherOut3, clk, en);
 
 always @ (posedge clk) begin
 
-	// if(i == 0) begin
-	// 		Nr <= 14;
-	// end
 	if (i <= Nr + 1) begin
 		
 		if (set1 == 0 && set2 == 0) begin
@@ -216,6 +214,7 @@ always @ (posedge clk) begin
 		end	
 		else begin
 			i = -1; // i = 0;
+			en <= 0;
 		end
 
 		en = 0;
@@ -236,6 +235,7 @@ always @ (posedge clk) begin
 			end
 			else begin
 				i = 0;
+				en <= 0;
 				
 			end
 
@@ -243,7 +243,7 @@ always @ (posedge clk) begin
 		end
 	end
 
-	else if (i < (2 * (Nr + 2)) ) begin
+	else if (i < (2 * (Nr + 2))) begin
 		en = 1;
 
 		if (set1 == 0 && set2 == 0) begin
@@ -260,6 +260,7 @@ always @ (posedge clk) begin
 		end
 		else begin
 			i = -1; // i = 0;
+			en <= 0;
 		end
 
 		i = i + 1;
@@ -270,21 +271,21 @@ end
 always @(*) begin
 	
 	if (set1 == 0 && set2 == 0) begin
-		 d128 = (decrypted128 == in) ? 1'b1 : 1'b0;
-		 decrypted = decrypted128;
+		d128 = (decrypted128 == in) ? 1'b1 : 1'b0;
+		decrypted = decrypted128;
 	end
 	else if (set1 == 0 && set2 == 1) begin
-		 d128 = (decrypted192 == in) ? 1'b1 : 1'b0;
-		 decrypted = decrypted192;
+		d128 = (decrypted192 == in) ? 1'b1 : 1'b0;
+		decrypted = decrypted192;
 	end
 	else if (set1 == 1 && set2 == 0) begin
-		 d128 = (decrypted256 == in) ? 1'b1 : 1'b0;
-		 decrypted = decrypted256;
+		d128 = (decrypted256 == in) ? 1'b1 : 1'b0;
+		decrypted = decrypted256;
 	end
 
 	else if (set1 == 1 && set2 == 1) begin
-		 d128 = 1'b0;
-		 decrypted = 0;
+		d128 = 1'b0;
+		decrypted = 0;
 	end
 
 end
