@@ -28,26 +28,12 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 Top level modules:
 	convertBinToBcd
 
-} {} {}} C:/Users/DELL/Desktop/AES/Decipher.v {1 {vlog -work work -stats=none C:/Users/DELL/Desktop/AES/Decipher.v
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module Decipher
-
-Top level modules:
-	Decipher
-
 } {} {}} C:/Users/DELL/Desktop/AES/mixColumns.v {1 {vlog -work work -stats=none C:/Users/DELL/Desktop/AES/mixColumns.v
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 -- Compiling module mixColumns
 
 Top level modules:
 	mixColumns
-
-} {} {}} C:/Users/DELL/Desktop/AES/AES_P.v {1 {vlog -work work -stats=none C:/Users/DELL/Desktop/AES/AES_P.v
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module AES_P
-
-Top level modules:
-	AES_P
 
 } {} {}} C:/Users/DELL/Desktop/AES/subBytes.v {1 {vlog -work work -stats=none C:/Users/DELL/Desktop/AES/subBytes.v
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
@@ -100,18 +86,18 @@ Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 
 Top level modules:
 	AES_P_tb
 
-} {} {}} C:/Users/DELL/Desktop/AES/encryptRound.v {1 {vlog -work work -stats=none C:/Users/DELL/Desktop/AES/encryptRound.v
-Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
--- Compiling module encryptRound
-
-Top level modules:
-	encryptRound
-
 } {} {}} C:/Users/DELL/Desktop/AES/inverseShiftRows.v {1 {vlog -work work -stats=none C:/Users/DELL/Desktop/AES/inverseShiftRows.v
 Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
 -- Compiling module inverseShiftRows
 
 Top level modules:
 	inverseShiftRows
+
+} {} {}} C:/Users/DELL/Desktop/AES/encryptRound.v {1 {vlog -work work -stats=none C:/Users/DELL/Desktop/AES/encryptRound.v
+Model Technology ModelSim - Intel FPGA Edition vlog 2020.1 Compiler 2020.02 Feb 28 2020
+-- Compiling module encryptRound
+
+Top level modules:
+	encryptRound
 
 } {} {}}

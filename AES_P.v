@@ -1,6 +1,8 @@
-module AES_P( e128, d128, segIn_1, segIn_2, segIn_3, segOut_1, segOut_2, segOut_3, clk , set1, set2);
+module AES_P( e128, e192, e256, d128, segIn_1, segIn_2, segIn_3, segOut_1, segOut_2, segOut_3, clk , set1, set2);
 
 output wire e128;
+output wire e192;
+output wire e256;
 output reg d128;
 input clk, set1, set2;
 output [6:0] segIn_1, segIn_2, segIn_3;
@@ -9,7 +11,7 @@ output [6:0] segOut_1, segOut_2, segOut_3;
 integer Nr = 10;
 integer i = 0;
 
-reg en;
+reg en = 0;
 
 reg [127:0] decrypted;
 // The plain text used as input
@@ -31,8 +33,8 @@ wire[127:0] encrypted192;
 wire[127:0] encrypted256;
 
 assign e128 = (encrypted128 == expected128 ) ? 1'b1 : 1'b0;
-assign e128 = (encrypted192 == expected192) ? 1'b1 : 1'b0;
-assign e128 = (encrypted256 == expected256) ? 1'b1 : 1'b0;
+assign e192 = (encrypted192 == expected192) ? 1'b1 : 1'b0;
+assign e256 = (encrypted256 == expected256) ? 1'b1 : 1'b0;
 
 // The result of the decryption module for every type
 reg [127:0] decrypted128;
@@ -57,6 +59,7 @@ wire [1407:0] w1;
 wire [1663:0] w2;
 wire [1919:0] w3;
 
+wire [127:0] tempWire;
 
 KeyExpantion #(4, 10) Ky1(key128 , w1);
 KeyExpantion #(6, 12) Ky2(key192 , w2);
@@ -66,11 +69,13 @@ Cipher #(128, 10, 4) a1(in, w1 , cipherOut1, clk , en, set1, set2);
 Cipher #(128, 12, 6) a2(in, w2 , cipherOut2, clk , en, set1, set2);
 Cipher #(128, 14, 8) a3(in, w3 , cipherOut3, clk , en, set1, set2);
 
-reg [127:0] inputDes;
 
-Decipher #(128, 10, 4) d1(inputdecipher1, w1, decipherOut1, clk, en, set1, set2);
-Decipher #(128, 12, 6) d2(inputdecipher2, w2, decipherOut2, clk, en, set1, set2);
-Decipher #(128, 14, 8) d3(inputdecipher3, w3, decipherOut3, clk, en, set1, set2);
+Decipher #(128, 10 , 4) d1(inputdecipher1, w1, decipherOut1, clk, en, set1, set2);
+Decipher #(128, 12 , 6) d2(inputdecipher2, w2, decipherOut2, clk, en, set1, set2);
+Decipher #(128, 14 , 8) d3(inputdecipher3, w3, decipherOut3, clk, en, set1, set2);
+
+
+//assign tempWire = (i == 0) ? in : decrypted; 
 
 always @(*)begin
 
@@ -83,10 +88,7 @@ always @(*)begin
 	else if (set1 == 1 && set2 == 0) begin
 		Nr <= 14;
 	end	
-	else if(set1 == 1 && set2 == 1) begin
-        i = 0;
-		en <= 0;
-	end
+	
 end
 
 always @(*) begin
@@ -100,37 +102,38 @@ always @(*) begin
 		   inputdecipher3 = cipherOut3;
 		 end
 	end
-	else if (i < i < (2 * (Nr + 2)))begin
+	else if ( i < (2 * (Nr + 2)))begin
 		 decrypted128 = decipherOut1;
 		 decrypted192 = decipherOut2;
 		 decrypted256 = decipherOut3;
 	end
 end
-always @(*) begin
-	if(i == 0) begin
-		decrypted = in;
-	end
-end
+
 
 always @ (posedge clk) begin
 
-	if (i <= Nr + 2) begin
-		if(set1 == 1 && set2 == 1) begin
-			i = -1; 
-			en <= 0;
-		end
+	if (set1 == 1 && set2 == 1) begin
+	   i = 0;
+	   en <= 0;
+	end
 
-		en = 0;
+	else if (i <= Nr + 2) begin
+		// if(set1 == 1 && set2 == 1) begin
+		// 	i = -1; 
+		// 	en <= 0;
+		// end
+
+
+		en <= 0;
+		if (i == Nr + 2) begin
+			en <= 1;
+		end
 		i = i + 1;
-
-		if (i == Nr + 3) begin
-			en = 1;
-		end
 
 	end
 
-	else if (i < (2 * (Nr + 2))) begin
-		en = 1;
+	else if (i < (2 * (Nr + 2))-1) begin
+		en <= 1;
 
 		if(set1 == 1 && set2 == 1) begin
 			i = -1; 
@@ -143,29 +146,33 @@ always @ (posedge clk) begin
 end
 
 always @(*) begin
-	
-	if (set1 == 0 && set2 == 0) begin
+	if ( i==1 ) begin
+		decrypted <=in;
+	end
+	else if (set1 == 0 && set2 == 0) begin
 		d128 = (decrypted128 == in) ? 1'b1 : 1'b0;
-		decrypted = decrypted128;
+		decrypted <= decrypted128;
 	end
 	else if (set1 == 0 && set2 == 1) begin
 		d128 = (decrypted192 == in) ? 1'b1 : 1'b0;
-		decrypted = decrypted192;
+		decrypted <= decrypted192;
 	end
 	else if (set1 == 1 && set2 == 0) begin
 		d128 = (decrypted256 == in) ? 1'b1 : 1'b0;
-		decrypted = decrypted256;
+		decrypted <= decrypted256;
 	end
 
 	else if (set1 == 1 && set2 == 1) begin
 		d128 = 1'b0;
-		decrypted = 0;
+		decrypted <= 0;
 	end
 
 end
 
-convertBinToBcd Cin(in[120+:8], segIn_1, segIn_2, segIn_3);
-convertBinToBcd Cout(decrypted[120+:8], segOut_1, segOut_2, segOut_3);
+//convertBinToBcd Cin(in[120+:8], segIn_1, segIn_2, segIn_3);
+convertBinToBcd Cout(decrypted[0+:8], segOut_1, segOut_2, segOut_3);
+
+
 
 always@(*) begin
 $monitor("out: %h NR: %d i: %d  en: %b " , decrypted, Nr , i , en);

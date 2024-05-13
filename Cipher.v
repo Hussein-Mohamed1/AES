@@ -26,7 +26,7 @@ addRoundKey addrk2(afterShiftRows, FinalOut2, word[127:0]);
 always@(posedge clk) begin
 	
 	if (set1 == 1 && set2 == 1) begin
-		i <= 0;
+		i = 0;
 	end
 	
 	if(en == 0) begin
