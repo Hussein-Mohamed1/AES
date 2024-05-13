@@ -30,7 +30,7 @@ initial begin
     clk = 1'b0;
     set1 = 1'b0;
     set2 = 1'b0;
-    #300;
+    #500;
 
     set1 = 1'b1;
     set2 = 1'b1; 
@@ -38,7 +38,15 @@ initial begin
 
     set1 = 1'b1;
     set2 = 1'b0;
-    #300;
+    #500;
+
+    set1 = 1'b1;
+    set2 = 1'b1; 
+    #10
+
+    set1 = 1'b0;
+    set2 = 1'b1;
+    #500;
 
 end
 

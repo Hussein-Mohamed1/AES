@@ -25,11 +25,8 @@ addRoundKey addrk2(afterShiftRows, FinalOut2, word[((128*(Nr+1))-1)-:128]);
 
 
 
-always@(posedge clk or posedge en) begin
+always@(posedge clk) begin
 	
-	if (set1 == 1 && set2 == 1) begin
-		i <= 0;
-	end
 
 	if(en==1) begin
 
@@ -52,6 +49,11 @@ always@(posedge clk or posedge en) begin
 
 		end	
 	end
+
+		if (set1 == 1 && set2 == 1) begin
+		i = 0;
+	end
+
 end
 
 endmodule
