@@ -1,8 +1,9 @@
-module Cipher#(parameter N=128,parameter Nr=10,parameter Nk=4)(in, word, out,clk);
+module Cipher#(parameter N=128,parameter Nr=10,parameter Nk=4)(in, word, out,clk , en, set1, set2);
 input [127:0] in;
-input [0 :128*(nr+1)-1] word; // input [1407:0] word;
+input [128*(Nr+1)-1:0] word; 
 input clk;
 output reg [127:0] out;
+input en, set1, set2;
 
 reg [127:0] currentState;
 wire [127:0] afterSubBytes;
@@ -22,34 +23,34 @@ shiftRows sr(afterSubBytes, afterShiftRows);
 
 addRoundKey addrk2(afterShiftRows, FinalOut2, word[127:0]);
 
-always@(posedge clk)
-
-	if (i <= Nr) begin
-	  if (i == 0 && firstRound !== 'bx) begin
-		currentState <= firstRound;
-		out <= firstRound;
-		i = i + 1;
-	  end
-
-	  else if (i < Nr && midRounds !== 'bx) begin
-		currentState <= midRounds;
-		out <= midRounds;
-		i = i + 1;
-	  end
-
-	  else if (i == Nr && midRounds !== 'bx) begin
-		out <= FinalOut2;
-	  end
-	  
+always@(posedge clk) begin
+	
+	if (set1 == 1 && set2 == 1) begin
+		i = 0;
 	end
-/*
-alwayes@(*) begin 
+	
+	if(en == 0) begin
+		if (i <= Nr) begin
+		if (i == 0 && firstRound !== 'bx) begin
+			currentState <= firstRound;
+			out <= firstRound;
+			i = i + 1;
+		end
 
+		else if (i < Nr && midRounds !== 'bx) begin
+			currentState <= midRounds;
+			out <= midRounds;
+			i = i + 1;
+		end
+
+		else if (i == Nr && midRounds !== 'bx) begin
+			out <= FinalOut2;
+		end
+		
+		end
 	end
+end
 
-
-
-*/
 endmodule
 
 /*
